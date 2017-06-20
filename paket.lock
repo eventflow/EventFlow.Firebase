@@ -1,0 +1,43 @@
+REDIRECTS: ON
+RESTRICTION: == net451
+NUGET
+  remote: https://www.nuget.org/api/v2
+    EventFlow (0.46.2886)
+      Newtonsoft.Json (>= 10.0.2)
+    FireSharp (2.0.4)
+      Microsoft.Bcl.Async (>= 1.0.168)
+      Microsoft.Net.Http (>= 2.2.28)
+      Newtonsoft.Json (>= 6.0.4)
+    Microsoft.Bcl (1.1.10)
+      Microsoft.Bcl.Build (>= 1.0.14)
+    Microsoft.Bcl.Async (1.0.168)
+      Microsoft.Bcl (>= 1.1.8)
+    Microsoft.Bcl.Build (1.0.21) - import_targets: false
+    Microsoft.Net.Http (2.2.29)
+      Microsoft.Bcl (>= 1.1.10)
+      Microsoft.Bcl.Build (>= 1.0.14)
+    MongoDB.Bson (2.4.4)
+    MongoDB.Driver (2.4.4)
+      MongoDB.Bson (>= 2.4.4)
+      MongoDB.Driver.Core (>= 2.4.4)
+    MongoDB.Driver.Core (2.4.4)
+      MongoDB.Bson (>= 2.4.4)
+      System.Runtime.InteropServices.RuntimeInformation (>= 4.0)
+    Newtonsoft.Json (10.0.3)
+    System.Runtime.InteropServices.RuntimeInformation (4.3)
+
+GROUP Test
+REDIRECTS: ON
+RESTRICTION: == net451
+NUGET
+  remote: https://www.nuget.org/api/v2
+    AutoFixture (3.50.2)
+    AutoFixture.AutoMoq (3.50.2)
+      AutoFixture (>= 3.50.2)
+      Moq (>= 4.1.1308.2120)
+    Castle.Core (4.1)
+    FluentAssertions (4.19.2)
+    Helpz (0.2.64)
+    Moq (4.7.49)
+      Castle.Core (>= 4.1)
+    NUnit (3.7.1)

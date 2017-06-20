@@ -1,0 +1,20 @@
+redirects: on
+framework: <= net451
+source https://www.nuget.org/api/v2/
+
+nuget EventFlow >= 0.46
+nuget Newtonsoft.Json >= 8.0
+nuget MongoDB.Driver >= 2.3
+nuget FireSharp >= 2.0
+
+group Test
+	redirects: on
+	framework: <= net451
+	source https://www.nuget.org/api/v2/
+	
+	nuget AutoFixture ~> 3.0
+	nuget AutoFixture.AutoMoq ~> 3.0
+	nuget FluentAssertions ~> 4.2
+	nuget Helpz
+	nuget Moq ~> 4.0
+	nuget NUnit ~> 3.0
