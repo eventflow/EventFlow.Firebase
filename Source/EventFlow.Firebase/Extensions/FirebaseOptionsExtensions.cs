@@ -58,8 +58,8 @@ namespace EventFlow.Firebase.Extensions
             };
 
             return eventFlowOptions
-                .ConfigureFirebase(config, true)
-                .ConfigureMongoDb(mongoDbConnectionString, mongoDbDatabase);
+                .ConfigureMongoDb(mongoDbConnectionString, mongoDbDatabase)
+                .ConfigureFirebase(config, true);
         }
 
         public static IEventFlowOptions ConfigureFirebase(
@@ -74,8 +74,8 @@ namespace EventFlow.Firebase.Extensions
             };
 
             return eventFlowOptions
-                .ConfigureFirebase(config, true)
-                .ConfigureMongoDb(mongoDbConnectionString, mongoDbDatabase);
+                .ConfigureMongoDb(mongoDbConnectionString, mongoDbDatabase)
+                .ConfigureFirebase(config, true);
         }
 
         private static IEventFlowOptions ConfigureFirebase(

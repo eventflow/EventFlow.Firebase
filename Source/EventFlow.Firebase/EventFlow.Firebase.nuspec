@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>EventFlow.Firebase</id>
+    <version>$version$</version>
+    <title>EventFlow.Firebase</title>
+    <authors>Jan Feyen, Warren Pieterse</authors>
+    <owners>Jan Feyen, Warren Pieterse</owners>
+    <licenseUrl>https://raw.githubusercontent.com/eventflow/EventFlow/develop/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/eventflow/EventFlow.Firebase</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/eventflow/EventFlow/develop/icon-128.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Firebase ReadStore and BackUpReadStore for EventFlow</description>
+    <releaseNotes>Fixed dependency issue on FireSharp</releaseNotes>
+    <copyright>Copyright (c) Jan Feyen/Warren Pieterse 2015 - 2017</copyright>
+    <tags>CQRS ES event sourcing Firebase</tags>
+    <repository type="git" url="https://github.com/eventflow/EventFlow.Firebase" />
+    <dependencies>
+        <dependency id="Newtonsoft.Json" version="10.0.2" exclude="Build,Analyzers" />
+        <dependency id="EventFlow" version="0.46" exclude="Build,Analyzers" />
+        <dependency id="MongoDB.Driver" version="2.3" exclude="Build,Analyzers" />
+        <dependency id="FireSharp" version="2.0.3" exclude="Build,Analyzers" />
+    </dependencies>
+  </metadata>
+</package>
