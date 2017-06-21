@@ -90,14 +90,26 @@ namespace EventFlow.Firebase.Extensions
             this IEventFlowOptions eventFlowOptions,
             Func<IFirebaseClient> firebaseClientFactory, bool useBackupStore)
         {
-            return eventFlowOptions.RegisterServices(sr =>
+            if (useBackupStore)
             {
-                sr.Register(f => firebaseClientFactory(), Lifetime.Singleton);
-                sr.Register<IReadModelDescriptionProvider, ReadModelDescriptionProvider>(Lifetime.Singleton, true);
-                sr.Register<IReadModelBackUpStore, ReadModelBackUpStore>();
-                sr.Register<IFirebaseReadStoreConfiguration>(f => new FirebaseReadStoreConfiguration(useBackupStore), Lifetime.Singleton);
-            });
-            
+                return eventFlowOptions.RegisterServices(sr =>
+                {
+                    sr.Register(f => firebaseClientFactory(), Lifetime.Singleton);
+                    sr.Register<IReadModelDescriptionProvider, ReadModelDescriptionProvider>(Lifetime.Singleton, true);
+                    sr.Register<IReadModelBackUpStore, ReadModelBackUpStore>();
+                    sr.Register<IFirebaseReadStoreConfiguration>(f => new FirebaseReadStoreConfiguration(useBackupStore), Lifetime.Singleton);
+                });
+            }
+            else
+            {
+                return eventFlowOptions.RegisterServices(sr =>
+                {
+                    sr.Register(f => firebaseClientFactory(), Lifetime.Singleton);
+                    sr.Register<IReadModelDescriptionProvider, ReadModelDescriptionProvider>(Lifetime.Singleton, true);
+                    sr.Register<IReadModelBackUpStore, MockReadModelBackUpStore>();
+                    sr.Register<IFirebaseReadStoreConfiguration>(f => new FirebaseReadStoreConfiguration(useBackupStore), Lifetime.Singleton);
+                });
+            }
         }
 
         private static IEventFlowOptions ConfigureMongoDb(

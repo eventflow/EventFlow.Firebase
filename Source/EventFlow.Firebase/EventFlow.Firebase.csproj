@@ -42,11 +42,13 @@
   <ItemGroup>
     <Compile Include="BackupStore\Constants\ReadModelBackupProperties.cs" />
     <Compile Include="BackupStore\IReadModelBackUpStore.cs" />
+    <Compile Include="BackupStore\MockReadModelBackUpStore.cs" />
     <Compile Include="BackupStore\Model\ReadModelBackup.cs" />
     <Compile Include="BackupStore\Model\ReadModelUpdateFailure.cs" />
     <Compile Include="BackupStore\ReadModelBackUpStore.cs" />
     <Compile Include="Configuration\FirebaseReadStoreConfiguration.cs" />
     <Compile Include="Configuration\IFirebaseReadStoreConfiguration.cs" />
+    <Compile Include="Extensions\FirebaseOptionsExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadStores\Attributes\FirebaseNodeNameAttribute.cs" />
     <Compile Include="ReadStores\FirebaseMappingReadModelStore.cs" />
