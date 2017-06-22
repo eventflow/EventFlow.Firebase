@@ -4,7 +4,7 @@ NUGET
   remote: https://www.nuget.org/api/v2
     EventFlow (0.46.2886)
       Newtonsoft.Json (>= 10.0.2)
-    FireSharp (2.0.4)
+    FireSharp (2.0.3)
       Microsoft.Bcl.Async (>= 1.0.168)
       Microsoft.Net.Http (>= 2.2.28)
       Newtonsoft.Json (>= 6.0.4)
