@@ -166,12 +166,12 @@ return EventFlowOptions.New
 As mentioned before in this ReadMe, Firebase isn't optimized to query your data but instead prefers you to go to nodes directly.
 Let's say we have a model like below:
 
-![Model](readme1.png)
+![Model](https://github.com/eventflow/EventFlow.Firebase/blob/develop/readme1.PNG)
 
 If you want to retrieve all lessons for course course-78016fce-0923-41cf-abe3-556dba2c7997, you can query the lessons node for all children where CourseId = course-78016fce-0923-41cf-abe3-556dba2c7997.
 The Firebase docs do not encourage this approach because of performance. They encourage you to create 'mapping' nodes like below:
 
-![Mappings](readme2.png)
+![Mappings](https://github.com/eventflow/EventFlow.Firebase/blob/develop/readme2.PNG)
 
 This enables us to get all the lesson id's for course course-78016fce-0923-41cf-abe3-556dba2c7997 by doing a simple get to /course-lessons/course-78016fce-0923-41cf-abe3-556dba2c7997.
 
