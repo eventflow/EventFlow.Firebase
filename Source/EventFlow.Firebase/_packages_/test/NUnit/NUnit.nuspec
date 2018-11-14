@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>NUnit</id>
+    <version>3.7.1</version>
+    <title>NUnit</title>
+    <authors>Charlie Poole</authors>
+    <owners>Charlie Poole</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>http://nunit.org/nuget/nunit3-license.txt</licenseUrl>
+    <projectUrl>http://nunit.org/</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/nunit/resources/master/images/icon/nunit_256.png</iconUrl>
+    <description>NUnit features a fluent assert syntax, parameterized, generic and theory tests and is user-extensible.
+
+This package includes the NUnit 3 framework assembly, which is referenced by your tests. You will need to install version 3 of the nunit3-console program or a third-party runner that supports NUnit 3 in order to execute tests. Runners intended for use with NUnit 2.x will not run NUnit 3 tests correctly.
+
+Supported platforms:
+- .NET 2.0+
+- .NET Standard 1.3 and 1.6
+- .NET Core</description>
+    <summary>NUnit is a unit-testing framework for all .NET languages with a strong TDD focus.</summary>
+    <releaseNotes>This package includes the NUnit 3 framework assembly, which is referenced by your tests. You will need to install version 3 of the nunit3-console program or a third-party runner that supports NUnit 3 in order to execute tests. Runners intended for use with NUnit 2.x will not run NUnit 3 tests correctly.</releaseNotes>
+    <copyright>Copyright (c) 2017 Charlie Poole</copyright>
+    <language>en-US</language>
+    <tags>nunit test testing tdd framework fluent assert theory plugin addin</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework2.0" />
+      <group targetFramework=".NETFramework3.5" />
+      <group targetFramework=".NETFramework4.0" />
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="NETStandard.Library" version="1.6.0" />
+        <dependency id="System.Threading.Thread" version="4.3.0" />
+      </group>
+      <group targetFramework=".NETStandard1.6">
+        <dependency id="NETStandard.Library" version="1.6.0" />
+        <dependency id="System.Runtime.Loader" version="4.3.0" />
+        <dependency id="System.Threading.Thread" version="4.3.0" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

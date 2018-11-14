@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?><coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties"><dc:creator>Microsoft</dc:creator><dc:description>This package enables Visual Studio 2012 projects to use the new 'async' and 'await' keywords. This package also includes Task-based extension methods that allow using some of the existing asynchronous APIs with the new language keywords. Windows Phone Silverlight 8 projects can use this package to get access to async extension methods for the networking types.
+
+This package is not supported in Visual Studio 2010, and is only required for projects targeting .NET Framework 4.5, Windows 8, Windows Phone Silverlight 8, or Windows Phone 8.1 when consuming a library that uses this package. For known issues, please see: http://blogs.msdn.com/b/bclteam/p/asynctargetingpackkb.aspx.
+
+For more information on the async programming model, visit MSDN: http://msdn.microsoft.com/en-us/library/vstudio/hh191443.aspx.
+
+Supported Platforms:
+- .NET Framework 4 (with KB2468871)
+- Windows 8
+- Windows Phone 8.1
+- Windows Phone Silverlight 7.5
+- Silverlight 4
+- Portable Class Libraries</dc:description><dc:identifier>Microsoft.Bcl.Async</dc:identifier><version>1.0.168</version><keywords>BCL Microsoft System Async Await Asynchronous</keywords><dc:title>Microsoft Async</dc:title><lastModifiedBy>NuGet, Version=2.8.50204.16, Culture=neutral, PublicKeyToken=null;Microsoft Windows NT 6.2.9200.0;.NET Framework 4.5.1</lastModifiedBy></coreProperties>

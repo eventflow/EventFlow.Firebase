@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>AutoFixture</id>
+    <version>3.50.2</version>
+    <title>AutoFixture</title>
+    <authors>Mark Seemann</authors>
+    <owners>Mark Seemann</owners>
+    <licenseUrl>https://github.com/AutoFixture/AutoFixture/blob/master/LICENCE.txt</licenseUrl>
+    <projectUrl>https://github.com/AutoFixture/AutoFixture</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/AutoFixture/AutoFixture/master/AutoFixtureLogo200x200.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>AutoFixture makes it easier for developers to do Test-Driven Development by automating non-relevant Test Fixture Setup, allowing the Test Developer to focus on the essentials of each test case.</description>
+    <language>en-US</language>
+  </metadata>
+</package>

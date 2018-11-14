@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>EventFlow</id>
+    <version>0.46.2886</version>
+    <title>EventFlow</title>
+    <authors>Rasmus Mikkelsen</authors>
+    <owners>Rasmus Mikkelsen</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://raw.githubusercontent.com/eventflow/EventFlow/develop/LICENSE</licenseUrl>
+    <projectUrl>http://docs.geteventflow.net/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/eventflow/EventFlow/develop/icon-128.png</iconUrl>
+    <description>Async/await first CQRS+ES and DDD framework for .NET - http://geteventflow.net/</description>
+    <releaseNotes>Fix: EventFlow now uses a Autofac lifetime scope for validating service
+registrations when `IEventFlowOpions.CreateResolver(true)` is invoked.
+Previously services were created but never disposed as they were resolved
+using the root container</releaseNotes>
+    <copyright>Copyright (c) Rasmus Mikkelsen 2015 - 2017</copyright>
+    <tags>CQRS ES event sourcing</tags>
+    <repository type="git" url="https://github.com/eventflow/EventFlow" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.1">
+        <dependency id="Newtonsoft.Json" version="10.0.2" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard1.6">
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="10.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

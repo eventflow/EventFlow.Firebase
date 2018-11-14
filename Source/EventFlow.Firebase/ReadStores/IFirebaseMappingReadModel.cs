@@ -6,6 +6,6 @@ namespace EventFlow.Firebase.ReadStores
     public interface IFirebaseMappingReadModel : IReadModel
     {
         //List<string> Children { get; set; }
-        Dictionary<string, bool> Children { get; set; }
+        Dictionary<string, object> Children { get; set; }
     }
 }

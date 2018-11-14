@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Helpz</id>
+    <version>0.2.64</version>
+    <title>Helpz - Test helpers</title>
+    <authors>rasmus</authors>
+    <owners>rasmus</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/rasmus/Helpz/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/rasmus/Helpz/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/rasmus/Helpz/develop/icon-256x256.png</iconUrl>
+    <description>A collection of helpers that ease the testing and configuration validation of a project</description>
+    <releaseNotes>Breaking: Renamed `ConnectionString` to `MsSqlConnectionString`
+New: New helpers
+- `VisualStudioProjectHelpz` Find Visual Studio projects in your project
+- `HttpMockHelpz` in the new NuGet package `Helpz.HttpMock` adds simple
+mocking of HTTP endpoints. Use it to see how your application reacts to e.g.
+timeouts or different status codes
+New: Added `Helpz.SQLite` with helpers to create connection strings
+and SQLite databases</releaseNotes>
+    <copyright>Copyright (c) 2015 Rasmus Mikkelsen</copyright>
+    <language>en-US</language>
+    <tags>mssql test validation integration testing configuration</tags>
+  </metadata>
+</package>
