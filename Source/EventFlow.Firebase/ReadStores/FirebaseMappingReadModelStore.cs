@@ -66,7 +66,7 @@ namespace EventFlow.Firebase.ReadStores
             {
                 var response = await _firebaseClient.GetAsync($"{readModelDescription.RootNodeName}/{id}");
                 var dynamicResult = response.ResultAs<dynamic>();
-                Dictionary<string, bool> children = new Dictionary<string, bool>();
+                Dictionary<string, object> children = new Dictionary<string, object>();
 
                 foreach (PropertyDescriptor prop in TypeDescriptor.GetProperties(dynamicResult))
                 {
@@ -114,7 +114,7 @@ namespace EventFlow.Firebase.ReadStores
 
                         if (dynamicResult != null)
                         {
-                            Dictionary<string, bool> children = new Dictionary<string, bool>();
+                            Dictionary<string, object> children = new Dictionary<string, object>();
 
                             foreach (PropertyDescriptor prop in TypeDescriptor.GetProperties(dynamicResult))
                             {
@@ -142,7 +142,7 @@ namespace EventFlow.Firebase.ReadStores
                         if (readModelEnvelope.ReadModel.Children != null && readModelEnvelope.ReadModel.Children.Count > 0)
                         {
                             await _readModelBackUpStore.UpdateAsync(readModelDescription.RootNodeName.Value, readModelUpdate.ReadModelId, readModelEnvelope.ReadModel, cancellationToken);
-                            await _readModelBackUpStore.TryFirebaseCoupleOfTimesAsync<TReadModel, SetResponse, Dictionary<string, bool>>(_firebaseClient.SetAsync, readModelDescription.RootNodeName.Value, readModelUpdate.ReadModelId, readModelEnvelope.ReadModel.Children);
+                            await _readModelBackUpStore.TryFirebaseCoupleOfTimesAsync<TReadModel, SetResponse, Dictionary<string, object>>(_firebaseClient.SetAsync, readModelDescription.RootNodeName.Value, readModelUpdate.ReadModelId, readModelEnvelope.ReadModel.Children);
                         }
                         else
                         {
