@@ -16,5 +16,6 @@ namespace EventFlow.Firebase.BackupStore.Model
         public string ReadModelId { get; set; }
         public string ReadModelType { get; set; }
         public string FirebaseMethod { get; set; }
+        public string ExceptionMessage { get; set; }
     }
 }

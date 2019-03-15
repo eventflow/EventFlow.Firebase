@@ -1,5 +1,5 @@
 redirects: on
-framework: <= net451
+framework: <= net471
 source https://www.nuget.org/api/v2/
 
 nuget EventFlow >= 0.67
@@ -9,7 +9,7 @@ nuget FireSharp = 2.0.3
 
 group Test
 	redirects: on
-	framework: <= net451
+	framework: <= net471
 	source https://www.nuget.org/api/v2/
 	
 	nuget AutoFixture ~> 3.0

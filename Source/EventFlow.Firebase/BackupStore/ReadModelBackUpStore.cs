@@ -86,15 +86,18 @@ namespace EventFlow.Firebase.BackupStore
 
         void LogFailedUpdate<TReadModel>(Exception exception, string method, string readModelDescription, string readModelId)
         {
+            string exceptionMessage = $"{exception.Message} {exception.InnerException?.Message} {exception.InnerException?.InnerException?.Message}";
+
             if (string.IsNullOrEmpty(readModelId))
-                _logger.Error(exception, $"Firebase failed to excecute {method} for {readModelDescription} of type {typeof(TReadModel)}");
+                _logger.Error(exception, $"Firebase failed to excecute {method} for {readModelDescription} of type {typeof(TReadModel)}. {exceptionMessage}");
             else
-                _logger.Error(exception, $"Firebase failed to excecute {method} for {readModelDescription} with id {readModelId} of type {typeof(TReadModel)}");
+                _logger.Error(exception, $"Firebase failed to excecute {method} for {readModelDescription} with id {readModelId} of type {typeof(TReadModel)}. {exceptionMessage}");
 
             var collection = _mongoDatabase.GetCollection<ReadModelUpdateFailure>($"{BACKUP_COLLECTION_PREFIX}.{FAILED_UPDATES_COLLECTION}");
             collection.InsertOne(
                 new ReadModelUpdateFailure()
                 {
+                    ExceptionMessage = exceptionMessage,
                     FailedAt = DateTime.Now,
                     Attemps = 0,
                     FirebaseMethod = method,
@@ -124,7 +127,6 @@ namespace EventFlow.Firebase.BackupStore
                 MethodInfo generic = method.MakeGenericMethod(readModel.GetType());
                 generic.Invoke(this, new object[] { readModelId, failedUpdates });
             }
-
         }
 
         void MarkFailedUpdatesAsFixed(List<ReadModelUpdateFailure> failedUpdates)
