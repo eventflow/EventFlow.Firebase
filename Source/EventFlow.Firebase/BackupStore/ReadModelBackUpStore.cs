@@ -86,7 +86,7 @@ namespace EventFlow.Firebase.BackupStore
 
         void LogFailedUpdate<TReadModel>(Exception exception, string method, string readModelDescription, string readModelId)
         {
-            string exceptionMessage = $"{exception.Message} {exception.InnerException?.Message} {exception.InnerException?.InnerException?.Message}";
+            string exceptionMessage = $"LogFailedUpdate: {exception?.Message} {exception?.InnerException?.Message} {exception?.InnerException?.InnerException?.Message}";
 
             if (string.IsNullOrEmpty(readModelId))
                 _logger.Error(exception, $"Firebase failed to excecute {method} for {readModelDescription} of type {typeof(TReadModel)}. {exceptionMessage}");
