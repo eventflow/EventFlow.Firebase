@@ -580,7 +580,7 @@
           <Paket>True</Paket>
         </Reference>
         <Reference Include="EventFlow">
-          <HintPath>..\..\packages\EventFlow\lib\net451\EventFlow.dll</HintPath>
+          <HintPath>..\..\packages\EventFlow\lib\net452\EventFlow.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -654,7 +654,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.1'">
       <ItemGroup>
         <Reference Include="MongoDB.Bson">
-          <HintPath>..\..\packages\MongoDB.Bson\lib\net45\MongoDB.Bson.dll</HintPath>
+          <HintPath>..\..\packages\MongoDB.Bson\lib\net452\MongoDB.Bson.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -665,7 +665,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.1'">
       <ItemGroup>
         <Reference Include="MongoDB.Driver">
-          <HintPath>..\..\packages\MongoDB.Driver\lib\net45\MongoDB.Driver.dll</HintPath>
+          <HintPath>..\..\packages\MongoDB.Driver\lib\net452\MongoDB.Driver.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -676,7 +676,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.1'">
       <ItemGroup>
         <Reference Include="MongoDB.Driver.Core">
-          <HintPath>..\..\packages\MongoDB.Driver.Core\lib\net45\MongoDB.Driver.Core.dll</HintPath>
+          <HintPath>..\..\packages\MongoDB.Driver.Core\lib\net452\MongoDB.Driver.Core.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
