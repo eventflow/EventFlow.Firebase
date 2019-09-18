@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
     <id>EventFlow.Firebase</id>
-    <version>$version$</version>
+    <version>0.75.3970.0</version>
     <title>EventFlow.Firebase</title>
     <authors>Jan Feyen, Warren Pieterse</authors>
     <owners>Jan Feyen, Warren Pieterse</owners>
@@ -16,10 +16,10 @@
     <tags>CQRS ES event sourcing Firebase</tags>
     <repository type="git" url="https://github.com/eventflow/EventFlow.Firebase" />
     <dependencies>
-        <dependency id="Newtonsoft.Json" version="12.0.0" exclude="Build,Analyzers" />
-        <dependency id="EventFlow" version="0.71" exclude="Build,Analyzers" />
-        <dependency id="MongoDB.Driver" version="2.8.0" exclude="Build,Analyzers" />
-        <dependency id="FireSharp" version="2.0.4" exclude="Build,Analyzers" />
+      <dependency id="Newtonsoft.Json" version="12.0.2" exclude="Build,Analyzers" />
+      <dependency id="EventFlow" version="0.75" exclude="Build,Analyzers" />
+      <dependency id="MongoDB.Driver" version="2.9.1" exclude="Build,Analyzers" />
+      <dependency id="FireSharp" version="2.0.4" exclude="Build,Analyzers" />
     </dependencies>
   </metadata>
 </package>

@@ -2,9 +2,9 @@ redirects: on
 framework: <= net471
 source https://www.nuget.org/api/v2/
 
-nuget EventFlow >= 0.67
-nuget Newtonsoft.Json >= 8.0
-nuget MongoDB.Driver >= 2.8.0
+nuget EventFlow >= 0.75
+nuget Newtonsoft.Json >= 12.0
+nuget MongoDB.Driver >= 2.9.0
 nuget FireSharp >= 2.0.4
 
 group Test

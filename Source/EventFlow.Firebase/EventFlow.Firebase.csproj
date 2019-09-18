@@ -29,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -63,6 +64,9 @@
     <Compile Include="ValueObjects\RootNodeName.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="package.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages\EventFlow\eventflow.0.46.2886.nupkg" />
     <None Include="packages\EventFlow\EventFlow.nuspec" />
     <None Include="packages\EventFlow\package\services\metadata\core-properties\31b3f250a83a43439d86b2ed5b179319.psmdcp" />
@@ -565,6 +569,17 @@
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.1'">
       <ItemGroup>
+        <Reference Include="Crc32C.NET">
+          <HintPath>..\..\packages\Crc32C.NET\lib\net20\Crc32C.NET.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.1'">
+      <ItemGroup>
         <Reference Include="DnsClient">
           <HintPath>..\..\packages\DnsClient\lib\net471\DnsClient.dll</HintPath>
           <Private>True</Private>
@@ -688,6 +703,28 @@
       <ItemGroup>
         <Reference Include="Newtonsoft.Json">
           <HintPath>..\..\packages\Newtonsoft.Json\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.1'">
+      <ItemGroup>
+        <Reference Include="SharpCompress">
+          <HintPath>..\..\packages\SharpCompress\lib\net45\SharpCompress.dll</HintPath>
+          <Private>True</Private>
+          <Paket>True</Paket>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.7.1'">
+      <ItemGroup>
+        <Reference Include="Snappy.NET">
+          <HintPath>..\..\packages\Snappy.NET\lib\net45\Snappy.NET.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
