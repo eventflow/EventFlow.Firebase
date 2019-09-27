@@ -52,10 +52,7 @@
     <Compile Include="Extensions\FirebaseOptionsExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadStores\Attributes\FirebaseNodeNameAttribute.cs" />
-    <Compile Include="ReadStores\FirebaseMappingReadModelStore.cs" />
     <Compile Include="ReadStores\FirebaseReadModelStore.cs" />
-    <Compile Include="ReadStores\IFirebaseMappingReadModel.cs" />
-    <Compile Include="ReadStores\IFirebaseMappingReadModelStore.cs" />
     <Compile Include="ReadStores\IFirebaseReadModel.cs" />
     <Compile Include="ReadStores\IFirebaseReadModelStore.cs" />
     <Compile Include="ReadStores\IReadModelDescriptionProvider.cs" />

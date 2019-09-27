@@ -8,9 +8,7 @@ namespace EventFlow.Firebase.ValueObjects
     {
         public ReadModelDescription(RootNodeName rootNodeName)
         {
-            if (rootNodeName == null) throw new ArgumentNullException(nameof(rootNodeName));
-
-            RootNodeName = rootNodeName;
+            RootNodeName = rootNodeName ?? throw new ArgumentNullException(nameof(rootNodeName));
         }
 
         public RootNodeName RootNodeName { get; }

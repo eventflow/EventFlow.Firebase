@@ -25,20 +25,17 @@ namespace EventFlow.Firebase.BackupStore
 
         private readonly IMongoDatabase _mongoDatabase;
         private readonly IFirebaseClient _firebaseClient;
-        private readonly IReadModelDescriptionProvider _mappingReadModelDescriptionProvider;
         private readonly IReadModelDescriptionProvider _readModelDescriptionProvider;
         private readonly ILog _logger;
 
         public ReadModelBackUpStore(
             IMongoDatabase mongoDatabase,
             IFirebaseClient firebaseClient,
-            IReadModelDescriptionProvider mappingReadModelDescriptionProvider,
             IReadModelDescriptionProvider readModelDescriptionProvider,
             ILog logger)
         {
             _mongoDatabase = mongoDatabase;
             _firebaseClient = firebaseClient;
-            _mappingReadModelDescriptionProvider = mappingReadModelDescriptionProvider;
             _readModelDescriptionProvider = readModelDescriptionProvider;
             _logger = logger;
         }
@@ -152,7 +149,7 @@ namespace EventFlow.Firebase.BackupStore
             failedUpdates.ForEach(async update =>
             {
                 update.LatestAttempt = DateTime.Now;
-                update.Attemps = update.Attemps + 1;
+                update.Attemps += 1;
 
                 var collection = _mongoDatabase.GetCollection<ReadModelUpdateFailure>($"{BACKUP_COLLECTION_PREFIX}.{FAILED_UPDATES_COLLECTION}");
                 var builder = Builders<ReadModelUpdateFailure>.Filter;
@@ -176,28 +173,6 @@ namespace EventFlow.Firebase.BackupStore
             try
             {
                 _firebaseClient.Set(path, readmodelBackup);
-                MarkFailedUpdatesAsFixed(failedUpdates);
-            }
-            catch (Exception)
-            {
-                MarkFailedUpdatesAsTriedAgain(failedUpdates);
-            }
-        }
-
-        public void RestoreMappingReadModel<TReadModel>(string readModelId, List<ReadModelUpdateFailure> failedUpdates)
-            where TReadModel : class, IFirebaseMappingReadModel, new()
-        {
-            var readModelDescription = _readModelDescriptionProvider.GetReadModelDescription<TReadModel>().RootNodeName.Value;
-            var readmodelBackup = GetLatestBackupForReadModel<TReadModel>(readModelDescription, readModelId);
-            var path = $"{readModelDescription}/{readModelId}";
-
-            try
-            {
-                if (readmodelBackup == null || readmodelBackup.Children == null || readmodelBackup.Children.Count == 0)
-                    _firebaseClient.Delete(path);
-                else
-                    _firebaseClient.Set(path, readmodelBackup.Children);
-
                 MarkFailedUpdatesAsFixed(failedUpdates);
             }
             catch (Exception)
@@ -241,7 +216,7 @@ namespace EventFlow.Firebase.BackupStore
         {
             int attempt = 0;
             bool success = false;
-            TReturn response = default(TReturn);
+            TReturn response = default;
             Exception exception = null;
             while (!success && attempt < ATTEMPTS)
             {
@@ -270,7 +245,7 @@ namespace EventFlow.Firebase.BackupStore
             var path = $"{readModelDescription}/{readModelId}";
             int attempt = 0;
             bool success = false;
-            TReturn response = default(TReturn);
+            TReturn response = default;
             Exception exception = null;
             while (!success && attempt < ATTEMPTS)
             {
@@ -299,7 +274,7 @@ namespace EventFlow.Firebase.BackupStore
             var path = $"{readModelDescription}/{readModelId}";
             int attempt = 0;
             bool success = false;
-            TReturn response = default(TReturn);
+            TReturn response = default;
             Exception exception = null;
             while (!success && attempt < ATTEMPTS)
             {

@@ -169,32 +169,5 @@ namespace EventFlow.Firebase.Extensions
                 })
                 .UseReadStoreFor<IFirebaseReadModelStore<TReadModel>, TReadModel, TReadModelLocator>();
         }
-
-        public static IEventFlowOptions UseFirebaseMappingReadModel<TReadModel>(
-            this IEventFlowOptions eventFlowOptions)
-            where TReadModel : class, IFirebaseMappingReadModel, new()
-        {
-            return eventFlowOptions
-                .RegisterServices(f =>
-                {
-                    f.Register<IFirebaseMappingReadModelStore<TReadModel>, FirebaseMappingReadModelStore<TReadModel>>();
-                    f.Register<IReadModelStore<TReadModel>>(r => r.Resolver.Resolve<IFirebaseMappingReadModelStore<TReadModel>>());
-                })
-                .UseReadStoreFor<IFirebaseMappingReadModelStore<TReadModel>, TReadModel>();
-        }
-
-        public static IEventFlowOptions UseFirebaseMappingReadModel<TReadModel, TReadModelLocator>(
-            this IEventFlowOptions eventFlowOptions)
-            where TReadModel : class, IFirebaseMappingReadModel, new()
-            where TReadModelLocator : IReadModelLocator
-        {
-            return eventFlowOptions
-                .RegisterServices(f =>
-                {
-                    f.Register<IFirebaseMappingReadModelStore<TReadModel>, FirebaseMappingReadModelStore<TReadModel>>();
-                    f.Register<IReadModelStore<TReadModel>>(r => r.Resolver.Resolve<IFirebaseMappingReadModelStore<TReadModel>>());
-                })
-                .UseReadStoreFor<IFirebaseMappingReadModelStore<TReadModel>, TReadModel, TReadModelLocator>();
-        }
     }
 }

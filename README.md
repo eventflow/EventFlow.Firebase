@@ -3,7 +3,6 @@ EventFlow.Firebase offers Firebase functionality to the [EventFlow](https://gith
 
 ### Features
 * FirebaseReadModel - a normal read model which is persisted in Firebase.
-* FirebaseMappingReadModel - A read model to create mappings in Firebase.
 * BackUpStore - Serves to rebuild the read models and/or recover read models when Firebase is down.
 
 ### Installation
@@ -161,70 +160,6 @@ return EventFlowOptions.New
     .CreateResolver();
 ```
 
-#### FirebaseMappingReadModel configuration
-##### Why mapping read models?
-As mentioned before in this ReadMe, Firebase isn't optimized to query your data but instead prefers you to go to nodes directly.
-Let's say we have a model like below:
-
-![Model](https://github.com/eventflow/EventFlow.Firebase/blob/develop/readme1.PNG)
-
-If you want to retrieve all lessons for course course-78016fce-0923-41cf-abe3-556dba2c7997, you can query the lessons node for all children where CourseId = course-78016fce-0923-41cf-abe3-556dba2c7997.
-The Firebase docs do not encourage this approach because of performance. They encourage you to create 'mapping' nodes like below:
-
-![Mappings](https://github.com/eventflow/EventFlow.Firebase/blob/develop/readme2.PNG)
-
-This enables us to get all the lesson id's for course course-78016fce-0923-41cf-abe3-556dba2c7997 by doing a simple get to /course-lessons/course-78016fce-0923-41cf-abe3-556dba2c7997.
-
-Your front end should use observables to retrieve Firebase data because of it's realtime nature and all the rx libraries (like RXJS) have powerfull operators to fetch the ids, map and combine the fetching for the lessons and return a nice mapping for all the lessons for this course in a a couple of lines of code.
-
-##### Configuring mapping read models
-
-Configuring Firebase mapping readmodels is also identical to other EventFlow readmodels. You only need to implement ```IFirebaseMappingReadModel``` instead of ```IReadModel```.
-The only property used on the read model is the ```Dictionary<string, bool> Children { get; set; }``` to hold the actual mappings.
-
-example:
-```c#
-[FirebaseNodeName("courses")]
-public class CourseReadModel : IFirebaseMappingReadModel,
-    IAmReadModelFor<CourseAggregate, CourseId, CourseCreated>
-{
-    public long? _version { get; set; }
-    public string Name { get; set; }
-    public DateTime Created { get; set; }
-    public string Level { get; set; }
-
-    public void Apply(
-        IReadModelContext context,
-        IDomainEvent<CourseAggregate, CourseId, CourseCreated> domainEvent)
-    {
-        Name = domainEvent.AggregateEvent.Name;
-        Created = domainEvent.AggregateEvent.Created;
-        Level = domainEvent.AggregateEvent.Level;
-    }
-}
-```
-
-Simular to the normal IReadModel, it can use a locator according to your needs, configuring a FirebaseReadModel would like:
-```c#
-return EventFlowOptions.New
-    ...
-    .UseFirebaseMappingReadModel<CourseLessonsMappingReadModel>()
-    ...
-    .CreateResolver();
-```
-Or with a locator:
-```c#
-return EventFlowOptions.New
-    ...
-    .RegisterServices(sr =>
-    {
-        sr.Register<ICourseLessonsMappingReadModelLocator, CourseLessonsMappingReadModelLocator>();
-    })
-    ...
-    .UseFirebaseReadModel<CourseLessonsMappingReadModel, ICourseLessonsMappingReadModelLocator>()
-    ...
-    .CreateResolver();
-```
 
 ### A Complete example - Course - Lessons
 I'm excluding the actual aggregates, commands, handlers, etc. The EventFlow's documentation habdles that.
@@ -314,37 +249,4 @@ public class LessonReadModel : IFirebaseReadModel,
         CourseId = domainEvent.AggregateEvent.CourseId;
     }
     }
-```
-
-The FirebaseMappingReadModel
-
-```c#
-[FirebaseNodeName("course-lessons")]
-public class CourseLessonsMappingReadModel : IFirebaseMappingReadModel,
-    IAmReadModelFor<LessonAggregate, LessonId, LessonCreated>
-{
-    public Dictionary<string, bool> Children { get; set; }
-
-    public void Apply(IReadModelContext context, IDomainEvent<LessonAggregate, LessonId, LessonCreated> domainEvent)
-    {
-        if (Children == null)
-            Children = new Dictionary<string, bool>();
-
-        Children.Add(domainEvent.AggregateIdentity.Value, true);
-    }
-}
-```
-
-The FirebaseMappingReadModelLocator
-```c#
-public interface ICourseLessonsMappingReadModelLocator : IReadModelLocator { }
-
-public class CourseLessonsMappingReadModelLocator : ICourseLessonsMappingReadModelLocator
-{
-    public IEnumerable<string> GetReadModelIds(IDomainEvent domainEvent)
-    {
-        if (domainEvent.EventType == typeof(LessonCreated))
-            yield return ((LessonCreated)domainEvent.GetAggregateEvent()).CourseId;
-    }
-}
 ```

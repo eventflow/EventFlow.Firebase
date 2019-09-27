@@ -18,13 +18,11 @@ namespace EventFlow.Firebase.ReadStores
     public class FirebaseReadModelStore<TReadModel> : IFirebaseReadModelStore<TReadModel>
         where TReadModel : class, IFirebaseReadModel, new()
     {
-
         private readonly ILog _log;
         private readonly IFirebaseClient _firebaseClient;
         private readonly IReadModelDescriptionProvider _readModelDescriptionProvider;
         private readonly IReadModelBackUpStore _readModelBackUpStore;
         private readonly IFirebaseReadStoreConfiguration _firebaseReadStoreConfiguration;
-
 
         public FirebaseReadModelStore(
             ILog log,
@@ -157,7 +155,5 @@ namespace EventFlow.Firebase.ReadStores
                 }
             }
         }
-
-        
     }
 }

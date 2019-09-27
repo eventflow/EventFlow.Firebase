@@ -16,6 +16,5 @@ namespace EventFlow.Firebase.ReadStores.Attributes
         {
             get { return nodeName; }
         }
-
     }
 }
